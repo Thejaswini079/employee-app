@@ -15,20 +15,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Unit Tests') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('MySonarQube') {  //name must match Jenkins SonarQube server config
-                    sh 'mvn sonar:sonar'
+                    bat 'mvn sonar:sonar'
                 }
             }
         }
